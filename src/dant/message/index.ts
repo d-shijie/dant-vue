@@ -1,4 +1,3 @@
-import { animations } from './../../utils/animations'
 import { createVNode, render } from 'vue'
 import Message from './message.vue'
 interface DMessageConfig {
