@@ -1,0 +1,16 @@
+@keyframes dScaleShow {
+  0% {
+   transform: scale(0);
+   opacity: 0 !important;
+  }
+
+  50% {
+   transform: scale(0.5);
+   opacity: 0.5 !important;
+  }
+
+  100% {
+   transform: scale(1);
+   opacity: 1 !important;
+  }
+}
