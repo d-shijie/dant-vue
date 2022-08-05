@@ -1,5 +1,5 @@
 <template>
-  <div class="d-message" :style="style[type]">
+  <div class="d-message" :class="animations[animation]" :style="style[type]">
     <div class="content">
       <img v-if="type!=='default'&&!icon" :src="style[type].icon">
       <img v-else-if="icon" :src="icon">
@@ -12,6 +12,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import { close } from './index'
+import { animations } from '@/utils/animations'
 defineProps({
   type: {
     type: String,
@@ -28,6 +29,10 @@ defineProps({
   closable: {
     type: Boolean,
     default: false
+  },
+  animation: {
+    type: String,
+    default: ''
   }
 })
 const style:any = {
@@ -69,7 +74,7 @@ const style:any = {
   border: 1px solid #ccc;
   box-shadow: 2px 2px 3px rgba(0,0,0,.3);
   background-color: rgb(207, 205, 205);
-  animation: dScaleShow 0.38s ease-in;
+
   .content {
     display: flex;
     align-items: center;

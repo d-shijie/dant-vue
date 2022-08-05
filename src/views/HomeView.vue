@@ -14,7 +14,7 @@
         危险
       </DButton>
     </div>
-    <DDialog v-model="isShowDialog" width="30%" title="Dialog">
+    <DDialog v-model="isShowDialog" animation="rotate" width="30%" title="Dialog">
       <div>我是dialog内容！！！</div>
       <template #footer>
         <div>
@@ -39,7 +39,7 @@ const iconSuccess = require('@/assets/icons/success.png')
 const iconDanger = require('@/assets/icons/danger.png')
 const isShowDialog = ref<boolean>(false)
 const btnClick = ():void => {
-  message({ type: 'warn', message: '警告 警告！！！', closable: true })
+  message({ type: 'warn', message: '警告 警告！！！', closable: true, animation: 'translate' })
 }
 const showDialog = ():void => {
   isShowDialog.value = true
@@ -49,5 +49,7 @@ const showDialog = ():void => {
 <style scoped lang="scss">
 .btns {
   display: flex;
+  align-items: center;
+  margin-top: 300px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div v-show="modelValue" class="d-dialog">
+  <div v-show="modelValue" :class="animations[animation]" class="d-dialog">
     <div class="content" :style="{'width': width}">
       <div class="dialog-title">
         <h2>
@@ -21,6 +21,7 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
+import { animations } from '@/utils/animations'
 defineProps({
   title: {
     type: String,
@@ -33,6 +34,10 @@ defineProps({
     default: false
   },
   width: {
+    type: String,
+    default: ''
+  },
+  animation: {
     type: String,
     default: ''
   }
@@ -55,7 +60,6 @@ const close = () => {
     background-color: rgba(0,0,0,.5);
     top: 0;
     left: 0;
-    animation: dScaleShow 0.28s ease-in;
     .content {
       width: 40%;
       padding: 10px;
