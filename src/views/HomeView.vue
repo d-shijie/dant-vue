@@ -14,6 +14,10 @@
         危险
       </DButton>
     </div>
+    <DInput v-model="inputValue2" icon="@/asset/icons/ban.png" :label="inputValue2" size="small" />
+    <DInput v-model="inputValue1" :label="inputValue1" size="normal" />
+    <DInput v-model="inputValue" type="password" :label="inputValue" size="large" />
+
     <DDialog v-model="isShowDialog" animation="rotate" width="30%" title="Dialog">
       <div>我是dialog内容！！！</div>
       <template #footer>
@@ -33,17 +37,22 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import message from '@/dant/message/index'
+import DInput from '@/dant/input/DInput.vue'
 
 const iconWarn = require('@/assets/icons/warn.png')
 const iconSuccess = require('@/assets/icons/success.png')
 const iconDanger = require('@/assets/icons/danger.png')
 const isShowDialog = ref<boolean>(false)
+const inputValue = ref('inputValue')
+const inputValue1 = ref('inputValue1')
+const inputValue2 = ref('inputValue2')
 const btnClick = ():void => {
   message({ type: 'warn', message: '警告 警告！！！', closable: true, animation: 'translate' })
 }
 const showDialog = ():void => {
   isShowDialog.value = true
 }
+
 </script>
 
 <style scoped lang="scss">
