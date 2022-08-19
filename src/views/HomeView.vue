@@ -7,7 +7,7 @@
       <DButton @click="showDialog">
         默认
       </DButton>
-      <DButton type="success" :icon-img="iconSuccess">
+      <DButton type="success" :icon-img="iconSuccess" @click="showMessageBox">
         成功
       </DButton>
       <DButton type="danger" :icon-img="iconDanger">
@@ -37,7 +37,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import message from '@/dant/message/index'
-import DInput from '@/dant/input/DInput.vue'
+import messageBox from '@/dant/messageBox/index'
 
 const iconWarn = require('@/assets/icons/warn.png')
 const iconSuccess = require('@/assets/icons/success.png')
@@ -51,6 +51,9 @@ const btnClick = ():void => {
 }
 const showDialog = ():void => {
   isShowDialog.value = true
+}
+const showMessageBox = () => {
+  messageBox({ title: '我是标题！', content: "<div slot='content'>hello world</div>" })
 }
 
 </script>
