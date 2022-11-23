@@ -1,7 +1,7 @@
 <template>
   <div class="d-input">
     <div class="label">
-      {{ label }}
+      {{ label }}:
     </div>
     <div class="content">
       <span v-if="icon" :class="{}">
@@ -26,7 +26,7 @@ const props = defineProps({
   },
   size: {
     type: String,
-    default: 'large'
+    default: 'normal'
   },
   type: {
     type: String,
@@ -62,7 +62,10 @@ const inputBlur = () => {
   display: flex;
   margin: 10px 0;
   align-items: center;
-
+   .label{
+    font-size: 16px;
+    font-weight: 650;
+   }
   .content {
     display: flex;
     align-items: center;

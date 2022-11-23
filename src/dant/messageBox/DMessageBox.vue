@@ -22,7 +22,7 @@
 <script setup lang="ts">
 import DButton from '../button/DButton.vue'
 import { close } from './index'
-import { defineProps, onMounted, h } from 'vue'
+import { defineProps, onMounted } from 'vue'
 const props = defineProps({
   title: {
     type: String,

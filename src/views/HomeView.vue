@@ -10,13 +10,12 @@
       <DButton type="success" :icon-img="iconSuccess" @click="showMessageBox">
         成功
       </DButton>
-      <DButton type="danger" :icon-img="iconDanger">
+      <DButton disabled type="danger" :icon-img="iconDanger">
         危险
       </DButton>
     </div>
-    <DInput v-model="inputValue2" icon="@/asset/icons/ban.png" :label="inputValue2" size="small" />
-    <DInput v-model="inputValue1" :label="inputValue1" size="normal" />
-    <DInput v-model="inputValue" type="password" :label="inputValue" size="large" />
+
+    <DInput v-model="inputValue" type="password" :label="inputValue" />
 
     <DDialog v-model="isShowDialog" animation="scale" width="40%" title="Dialog" @close="handleClose">
       <div>我是dialog内容！！！</div>
@@ -43,19 +42,17 @@ const iconWarn = require('@/assets/icons/warn.png')
 const iconSuccess = require('@/assets/icons/success.png')
 const iconDanger = require('@/assets/icons/danger.png')
 const isShowDialog = ref<boolean>(false)
-const inputValue = ref('inputValue')
-const inputValue1 = ref('inputValue1')
-const inputValue2 = ref('inputValue2')
+const inputValue = ref<string>('inputValue')
 const btnClick = (): void => {
   message({ type: 'warn', message: '警告 警告！！！', closable: true, animation: 'translate' })
 }
 const showDialog = (): void => {
   isShowDialog.value = true
 }
-const showMessageBox = () => {
+const showMessageBox = (): void => {
   messageBox({ title: '我是标题！', content: "<div slot='content'>hello world</div>" })
 }
-const handleClose = (value:boolean) => {
+const handleClose = (value: boolean): void => {
   console.log(value)
 }
 </script>

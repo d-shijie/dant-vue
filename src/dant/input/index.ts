@@ -1,14 +1,13 @@
 const style:any = {
   size: {
     small: {
-      padding: '2px'
+      padding: '6px'
     },
     large: {
-
       padding: '10px'
     },
     normal: {
-      padding: '5px'
+      padding: '8px'
     }
   }
 }

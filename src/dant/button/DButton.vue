@@ -45,7 +45,7 @@ const mouseOut = (e:any) => {
   border: 1px solid rgb(193, 193, 193);
   border-radius: 10px;
   margin: 0 5px ;
-  padding: 5px 10px;
+  padding: 7px 10px;
   color: #000;
   cursor: pointer;
   letter-spacing: 2px;
@@ -53,8 +53,8 @@ const mouseOut = (e:any) => {
   align-items: center;
 
   .pre {
-    width: 20px;
-    height: 20px;
+    width:18px;
+    height:18px;
     overflow: hidden;
      margin-right: 5px;
     img {

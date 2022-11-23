@@ -6,21 +6,21 @@ const style:any = {
     color: '#000'
   },
   success: {
-    hoverBgc: '#ccc',
+    hoverBgc: 'rgba(0,0,255,.7)',
     hoverColor: '#fff',
-    backgroundColor: 'blue',
+    backgroundColor: 'rgb(0,0,255)',
     color: '#ffff'
   },
   danger: {
     hoverBgc: 'blue',
     hoverColor: '#fff',
-    backgroundColor: 'red',
+    backgroundColor: 'rgb(255,0,0)',
     color: '#ffff'
   },
   warn: {
-    hoverBgc: 'blue',
+    hoverBgc: 'rgba(255, 153, 0,.7)',
     hoverColor: '#fff',
-    backgroundColor: 'orange',
+    backgroundColor: 'rgb(255, 153, 0)',
     color: '#ffff'
   }
 }
