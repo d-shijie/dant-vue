@@ -10,3 +10,6 @@ export default ({ title, content }:DMessageBoxConfig) => {
   const vNode = createVNode(DMessageBox, { title, content })
   render(vNode, div)
 }
+export const close = () => {
+  render(null, div)
+}

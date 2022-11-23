@@ -17,13 +17,11 @@ export default ({ message, type, icon, closable, animation }:DMessageConfig) => 
   // 第二个参数为props的参数
   const vnode = createVNode(Message, { message, type, icon, closable, animation })
   render(vnode, div)
-
+  close()
+}
+export function close() {
   timer && clearTimeout(timer)
   timer = setTimeout(() => {
     render(null, div)
   }, 2000)
-}
-export function close() {
-  timer && clearTimeout(timer)
-  render(null, div)
 }

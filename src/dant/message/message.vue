@@ -1,7 +1,7 @@
 <template>
   <div class="d-message" :class="animations[animation]" :style="style[type]">
     <div class="content">
-      <img v-if="type!=='default'&&!icon" :src="style[type].icon">
+      <img v-if="type !== 'default' && !icon" :src="style[type].icon">
       <img v-else-if="icon" :src="icon">
       <a>{{ message }}</a>
       <i v-show="closable" @click="close">x</i>
@@ -35,7 +35,7 @@ defineProps({
     default: ''
   }
 })
-const style:any = {
+const style: any = {
   default: {
     icon: require('@/assets/icons/default.png')
   },
@@ -59,6 +59,7 @@ const style:any = {
 
 <style scoped lang="scss">
 @import url('@/assets/css/animation.css');
+
 .d-message {
   position: absolute;
   z-index: 9999;
@@ -72,24 +73,27 @@ const style:any = {
   border-radius: 15px;
   color: rgb(111, 111, 111);
   border: 1px solid #ccc;
-  box-shadow: 2px 2px 3px rgba(0,0,0,.3);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, .3);
   background-color: rgb(207, 205, 205);
 
   .content {
     display: flex;
     align-items: center;
+
     img {
       height: 20px;
       width: 20px;
       border-radius: 50%;
       margin-right: 5px;
     }
+
     i {
       position: absolute;
       right: 10px;
 
       cursor: pointer;
     }
+
     i:hover {
       color: #000;
     }

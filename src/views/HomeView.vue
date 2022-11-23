@@ -18,11 +18,11 @@
     <DInput v-model="inputValue1" :label="inputValue1" size="normal" />
     <DInput v-model="inputValue" type="password" :label="inputValue" size="large" />
 
-    <DDialog v-model="isShowDialog" animation="rotate" width="30%" title="Dialog">
+    <DDialog v-model="isShowDialog" animation="scale" width="40%" title="Dialog" @close="handleClose">
       <div>我是dialog内容！！！</div>
       <template #footer>
         <div>
-          <DButton @click="isShowDialog=false">
+          <DButton @click="isShowDialog = false">
             取消
           </DButton>
           <DButton type="success">
@@ -46,16 +46,18 @@ const isShowDialog = ref<boolean>(false)
 const inputValue = ref('inputValue')
 const inputValue1 = ref('inputValue1')
 const inputValue2 = ref('inputValue2')
-const btnClick = ():void => {
+const btnClick = (): void => {
   message({ type: 'warn', message: '警告 警告！！！', closable: true, animation: 'translate' })
 }
-const showDialog = ():void => {
+const showDialog = (): void => {
   isShowDialog.value = true
 }
 const showMessageBox = () => {
   messageBox({ title: '我是标题！', content: "<div slot='content'>hello world</div>" })
 }
-
+const handleClose = (value:boolean) => {
+  console.log(value)
+}
 </script>
 
 <style scoped lang="scss">

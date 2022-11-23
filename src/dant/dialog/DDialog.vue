@@ -22,7 +22,7 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
 import { animations } from '@/utils/animations'
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     default: ''
@@ -42,52 +42,61 @@ defineProps({
     default: ''
   }
 })
-
-const emits = defineEmits(['update:modelValue'])
+const emits = defineEmits(['update:modelValue', 'close'])
 const close = () => {
   // 通过update:modelValue进行更新 也是默认
   // 若v-model:title 使用update:title
   emits('update:modelValue', false)
+  emits('close', props.modelValue)
 }
 </script>
 
 <style scoped lang="scss">
 @import url('@/assets/css/animation.css');
+
 .d-dialog {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, .5);
+  top: 0;
+  left: 0;
+
+  .content {
+    width: 40%;
+    padding: 10px;
+    background-color: #fff;
+    transform: translateX(-50%);
     position: absolute;
-    background-color: rgba(0,0,0,.5);
-    top: 0;
-    left: 0;
-    .content {
-      width: 40%;
-      padding: 10px;
-      background-color: #fff;
-      transform: translateX(-50%);
-      position: absolute;
-      left: 50%;
-      top: 20%;
-      .dialog-title{
-        display: flex;
-        justify-content:space-between;
-        align-items: center;
-        i {
-          font-size: 25px;
-          cursor: pointer;
-        }
-        i:hover {
-          color: #ccc;
-        }
+    left: 50%;
+    top: 20%;
+
+    .dialog-title {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: center;
+      height: 24px;
+      margin-bottom: 24px;
+
+      i {
+        font-size: 25px;
+        cursor: pointer;
       }
-      .dialog-content {
-       margin-bottom: 10px;
+
+      i:hover {
+        color: #ccc;
       }
-      .dialog-footer {
-        margin: 10px 0;
-      }
+    }
+
+    .dialog-content {
+      margin-bottom: 10px;
+    }
+
+    .dialog-footer {
+      margin: 10px 0;
+    }
 
   }
 }
-
 </style>
