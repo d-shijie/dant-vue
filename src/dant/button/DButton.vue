@@ -43,7 +43,7 @@ const mouseOut = (e:any) => {
 <style scoped lang="scss">
 .d-button {
   border: 1px solid rgb(193, 193, 193);
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 0 5px ;
   padding: 7px 10px;
   color: #000;
