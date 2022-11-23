@@ -61,14 +61,12 @@ const mouseOut = (e:any) => {
       height: 100%;
       border-radius: 50%;
       width: 100%;
-
     }
   }
-
 }
 .disabled {
-  cursor: url('../../../public/favicon.ico'),default !important;
-  background-color: rgba(0,0,0,.1) !important;
-  color: rgb(181, 181, 181) !important;
+  cursor: url('@/assets/icons/ban.ico'),default !important; //此处只有public中的favicon.ico文件生效了
+  background-color: rgba(0,0,0,.2) !important;
+  color: #000 !important;
 }
 </style>

@@ -1,4 +1,6 @@
 import { comps } from './comps'
+console.log(comps)
+
 // 全局挂载所有组件
 export default (app:any) => {
   for (let i = 0; i < comps.length; i++) {
