@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { animations } from '@/utils/animations'
+import { animations } from '../../utils/animations'
 const props = defineProps({
   title: {
     type: String,

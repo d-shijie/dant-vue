@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { onMounted, PropType, ref } from 'vue'
 import { style } from './index'
-import { animations } from '@/utils/animations'
+import { animations } from '../../utils/animations'
 const props = defineProps({
   modelValue: {
     type: Array as PropType<{ data: string }[]>,
@@ -34,7 +34,7 @@ const props = defineProps({
     default: 300
   },
   interval: {
-    type: [String, Number],
+    type: Number,
     default: 3000
   },
   pointType: {

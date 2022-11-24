@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import { close } from './index'
-import { animations } from '@/utils/animations'
+import { animations } from '../../utils/animations'
 defineProps({
   type: {
     type: String,
