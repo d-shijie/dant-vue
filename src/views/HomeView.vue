@@ -16,7 +16,7 @@
       </DButton>
     </div>
     <DInput v-model="inputValue" type="password" :label="inputValue" />
-    <DTag v-for="(item,index) in tags" :key="index" closable :type="item.type" @handle-close="tagClose">
+    <DTag v-for="(item,index) in tags" :key="index" :theme="item.theme" :color="item.color" closable :type="item.type" @handle-close="tagClose">
       {{ item.label }}
     </DTag>
     <DDialog v-model="isShowDialog" animation="scale" width="40%" title="Dialog" @close="dialogClose">
@@ -54,12 +54,13 @@ const swiperData = ref<{data:string}[]>([
 const tags = ref([
   {
     type: 'default',
-    label: 'tag 1'
-
+    label: 'tag 1',
+    color: 'yellow'
   },
   {
     type: 'success',
-    label: 'tag 2'
+    label: 'tag 2',
+    theme: 'dark'
   },
   {
     type: 'warn',
