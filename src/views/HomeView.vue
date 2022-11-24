@@ -40,9 +40,9 @@ import { ref } from 'vue'
 import message from '@/dant/components/message'
 import messageBox from '@/dant/components/messageBox/index'
 
-const iconWarn = require('@/assets/icons/warn.png')
-const iconSuccess = require('@/assets/icons/success.png')
-const iconDanger = require('@/assets/icons/danger.png')
+const iconWarn = require('@/dant/assets/icons/warn.png')
+const iconSuccess = require('@/dant/assets/icons/success.png')
+const iconDanger = require('@/dant/assets/icons/danger.png')
 const isShowDialog = ref<boolean>(false)
 const inputValue = ref<string>('InputValue')
 const swiperData = ref<{data:string}[]>([
