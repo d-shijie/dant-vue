@@ -37,8 +37,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import message from '@/dant/message/index'
-import messageBox from '@/dant/messageBox/index'
+import message from '@/dant/components/message'
+import messageBox from '@/dant/components/messageBox/index'
 
 const iconWarn = require('@/assets/icons/warn.png')
 const iconSuccess = require('@/assets/icons/success.png')

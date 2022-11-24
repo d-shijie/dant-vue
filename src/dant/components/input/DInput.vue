@@ -5,7 +5,7 @@
     </div>
     <div class="content">
       <span v-if="icon" :class="{}">
-        <img src="@/assets/icons/default.png" alt="">
+        <img src="../../assets/icons/default.png" alt="">
       </span>
       <input ref="inputDom" :style="[style.size[size],{'minWidth': modelValue.length*7.5+'px'},{'paddingLeft': icon===''? '10px':'30px'}]" :type="type" :placeholder="placeholder" @blur="inputBlur" @focus="inputFocus" @keyup="inputChange">
     </div>

@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import { mouseEnter, mouseLeave, style } from './index'
 const props = defineProps({
   type: {
@@ -65,7 +64,7 @@ const mouseOut = (e:any) => {
   }
 }
 .disabled {
-  cursor: url('@/assets/icons/ban.ico'),default !important; //此处只有public中的favicon.ico文件生效了
+  cursor: url('../../assets/icons/ban.ico'),default !important; //此处只有public中的favicon.ico文件生效了
   background-color: rgba(0,0,0,.2) !important;
   color: #000 !important;
 }

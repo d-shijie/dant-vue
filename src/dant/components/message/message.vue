@@ -37,20 +37,20 @@ defineProps({
 })
 const style: any = {
   default: {
-    icon: require('@/assets/icons/default.png')
+    icon: require('../../assets/icons/default.png')
   },
   succuss: {
-    icon: require('@/assets/icons/success.png'),
+    icon: require('../../assets/icons/success.png'),
     backgroundColor: 'yellow',
     color: '#ccc'
   },
   warn: {
-    icon: require('@/assets/icons/warn.png'),
+    icon: require('../../assets/icons/warn.png'),
     backgroundColor: 'orange',
     color: '#fff'
   },
   danger: {
-    icon: require('@/assets/icons/danger.png'),
+    icon: require('../../assets/icons/danger.png'),
     backgroundColor: 'red',
     color: '#fff'
   }
@@ -58,7 +58,7 @@ const style: any = {
 </script>
 
 <style scoped lang="scss">
-@import url('@/assets/css/animation.css');
+@import url('../../style/animation.css');
 
 .d-message {
   position: absolute;

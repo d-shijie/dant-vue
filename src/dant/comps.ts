@@ -1,10 +1,10 @@
 // 所有组件
-import DButton from '@/dant/button/DButton.vue'
-import DDialog from '@/dant/dialog/DDialog.vue'
-import DSelect from '@/dant/select/DSelect.vue'
-import DInput from '@/dant/input/DInput.vue'
-import DSwiper from '@/dant/swiper/DSwiper.vue'
-import DTag from '@/dant/tag/DTag.vue'
+import DButton from './components/button/DButton.vue'
+import DDialog from './components/dialog/DDialog.vue'
+import DSelect from './components/select/DSelect.vue'
+import DInput from './components/input/DInput.vue'
+import DSwiper from './components/swiper/DSwiper.vue'
+import DTag from './components/tag/DTag.vue'
 export const comps = [
   DButton,
   DDialog,

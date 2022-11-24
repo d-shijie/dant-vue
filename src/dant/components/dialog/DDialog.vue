@@ -51,7 +51,7 @@ const close = () => {
 </script>
 
 <style scoped lang="scss">
-@import url('@/assets/css/animation.css');
+@import url('../../style/animation.css');
 
 .d-dialog {
   width: 100%;
