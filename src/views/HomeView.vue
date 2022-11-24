@@ -55,6 +55,7 @@ const tags = ref([
   {
     type: 'default',
     label: 'tag 1'
+
   },
   {
     type: 'success',
