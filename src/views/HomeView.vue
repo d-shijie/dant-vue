@@ -15,7 +15,7 @@
       </DButton>
     </div>
     <DInput v-model="inputValue" type="password" :label="inputValue" />
-    <DSwiper v-model="swiperData" />
+    <DSwiper v-model="swiperData" pointType="oval" anime="scale" />
     <DDialog v-model="isShowDialog" animation="scale" width="40%" title="Dialog" @close="handleClose">
       <div>我是dialog内容！！！</div>
       <template #footer>
@@ -41,7 +41,7 @@ const iconWarn = require('@/assets/icons/warn.png')
 const iconSuccess = require('@/assets/icons/success.png')
 const iconDanger = require('@/assets/icons/danger.png')
 const isShowDialog = ref<boolean>(false)
-const inputValue = ref<string>('inputValue')
+const inputValue = ref<string>('InputValue')
 const swiperData = ref<{data:string}[]>([
   { data: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbkimg.cdn.bcebos.com%2Fpic%2Fdcc451da81cb39dbb6fd966d2d471e24ab18972b9af4&refer=http%3A%2F%2Fbkimg.cdn.bcebos.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1671791728&t=e4990069bccfdc0bb026ac1710715c29' },
   { data: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbkimg.cdn.bcebos.com%2Fpic%2F8326cffc1e178a82b901a69b0b52648da977391242f7&refer=http%3A%2F%2Fbkimg.cdn.bcebos.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1671791727&t=afd2f0a3ba7c4442c21032505ef0cd3f' },
