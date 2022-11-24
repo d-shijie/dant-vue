@@ -1,6 +1,7 @@
 .Scale {
-  animation: dScaleShow 0.28s ease-in;
- }
+  animation: dScaleShow 0.28s ease-in !important;
+  -webkit-animation: dScaleShow 0.28s ease-in !important;
+}
 @keyframes dScaleShow {
   0% {
    transform: scale(0);
@@ -22,8 +23,8 @@
   }
 }
 .Translate {
-  animation: dTranslateShow 0.28s ease-in;
-  -webkit-animation: dTranslateShow 0.28s ease-in;
+  animation: dTranslateShow 0.28s ease-in !important;
+  -webkit-animation: dTranslateShow 0.28s ease-in !important;
 }
 @keyframes dTranslateShow {
   0% {
@@ -54,8 +55,8 @@
 }
 }
 .Rotate {
-  animation: dRotateShow 0.28s ease-in;
-  -webkit-animation: dRotateShow 0.58s ease-in;
+  animation: dRotateShow 0.28s ease-in !important;
+  -webkit-animation: dRotateShow 0.28s ease-in !important;
 }
 @keyframes dRotateShow {
   0% {

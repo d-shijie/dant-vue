@@ -4,10 +4,12 @@ import DDialog from '@/dant/dialog/DDialog.vue'
 import DSelect from '@/dant/select/DSelect.vue'
 import DInput from '@/dant/input/DInput.vue'
 import DSwiper from '@/dant/swiper/DSwiper.vue'
+import DTag from '@/dant/tag/DTag.vue'
 export const comps = [
   DButton,
   DDialog,
   DSelect,
   DInput,
-  DSwiper
+  DSwiper,
+  DTag
 ]

@@ -26,15 +26,15 @@ const props = defineProps({
     default: () => []
   },
   width: {
-    type: String,
+    type: [String, Number],
     default: '550'
   },
   height: {
-    type: String,
-    default: '300'
+    type: [String, Number],
+    default: 300
   },
   interval: {
-    type: Number,
+    type: [String, Number],
     default: 3000
   },
   pointType: {
@@ -85,7 +85,7 @@ onMounted(() => {
 
   .d-swiper__points {
     position: absolute;
-    z-index: 1000;
+    z-index: 10;
     bottom: 5px;
     left: 50%;
     transform: translateX(-50%);

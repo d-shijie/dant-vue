@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <DSwiper v-model="swiperData" pointType="oval" anime="scale" />
     <div class="btns">
       <DButton type="warn" :icon-img="iconWarn" @click="btnClick">
         警告
@@ -15,8 +16,10 @@
       </DButton>
     </div>
     <DInput v-model="inputValue" type="password" :label="inputValue" />
-    <DSwiper v-model="swiperData" pointType="oval" anime="scale" />
-    <DDialog v-model="isShowDialog" animation="scale" width="40%" title="Dialog" @close="handleClose">
+    <DTag v-for="(item,index) in tags" :key="index" closable :type="item.type" @handle-close="tagClose">
+      {{ item.label }}
+    </DTag>
+    <DDialog v-model="isShowDialog" animation="scale" width="40%" title="Dialog" @close="dialogClose">
       <div>我是dialog内容！！！</div>
       <template #footer>
         <div>
@@ -48,6 +51,24 @@ const swiperData = ref<{data:string}[]>([
   { data: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20161215%2F20bb60d6321b40d39153d486263da387_th.jpeg&refer=http%3A%2F%2Fimg.mp.itc.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1671791727&t=77f874b97d7a0723e8bccc642cb8a5ea' },
   { data: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbkimg.cdn.bcebos.com%2Fpic%2F6a600c338744ebf81a4c640024a8c02a6059252d09c8&refer=http%3A%2F%2Fbkimg.cdn.bcebos.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1671791728&t=f8b8264f9b9bfbf300d2211ce2d81dcf' }
 ])
+const tags = ref([
+  {
+    type: 'default',
+    label: 'tag 1'
+  },
+  {
+    type: 'success',
+    label: 'tag 2'
+  },
+  {
+    type: 'warn',
+    label: 'tag 3'
+  },
+  {
+    type: 'danger',
+    label: 'tag 4'
+  }
+])
 const btnClick = (): void => {
   message({ type: 'warn', message: '警告 警告！！！', closable: true, animation: 'translate' })
 }
@@ -57,8 +78,11 @@ const showDialog = (): void => {
 const showMessageBox = (): void => {
   messageBox({ title: '我是标题！', content: "<div slot='content'>hello world</div>" })
 }
-const handleClose = (value: boolean): void => {
+const dialogClose = (value: boolean): void => {
   console.log(value)
+}
+const tagClose = () => {
+  console.log('tag closed')
 }
 </script>
 
@@ -66,6 +90,6 @@ const handleClose = (value: boolean): void => {
 .btns {
   display: flex;
   align-items: center;
-  margin-top: 300px;
+
 }
 </style>

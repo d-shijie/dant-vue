@@ -45,16 +45,17 @@ onMounted(() => {
   top: 0;
   height: 100vh;
   width: 100vw;
+  z-index: 9999;
   background-color: rgba(0, 0, 0, .3);
 
   .message-box {
     position: absolute;
     z-index: 9999;
     left: 50%;
-    top: 40%;
-    width: 15vw;
+    top: 20%;
+    width: 20vw;
     padding: 30px;
-    margin-left: -7.5vw;
+    margin-left: -10vw;
     background-color: #fff;
     border: 1px solid #ccc;
 

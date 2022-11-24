@@ -44,7 +44,7 @@ const mouseOut = (e:any) => {
 .d-button {
   border: 1px solid rgb(193, 193, 193);
   border-radius: 5px;
-  margin: 0 5px ;
+  margin: 5px ;
   padding: 7px 10px;
   color: #000;
   cursor: pointer;
