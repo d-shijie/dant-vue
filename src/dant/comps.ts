@@ -5,11 +5,13 @@ import DSelect from './components/select/DSelect.vue'
 import DInput from './components/input/DInput.vue'
 import DSwiper from './components/swiper/DSwiper.vue'
 import DTag from './components/tag/DTag.vue'
+import DColorPicker from './components/colorPicker/DColorPicker.vue'
 export const comps = [
   DButton,
   DDialog,
   DSelect,
   DInput,
   DSwiper,
-  DTag
+  DTag,
+  DColorPicker
 ]

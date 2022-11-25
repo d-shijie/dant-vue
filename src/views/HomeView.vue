@@ -19,6 +19,8 @@
     <DTag v-for="(item,index) in tags" :key="index" :theme="item.theme" :color="item.color" closable :type="item.type" @handle-close="tagClose">
       {{ item.label }}
     </DTag>
+    <DColorPicker v-model="defaultBgc" size="small" @handle-change="changeBgc" />
+    <DSelect label="选择器：" />
     <DDialog v-model="isShowDialog" animation="scale" width="40%" title="Dialog" @close="dialogClose">
       <div>我是dialog内容！！！</div>
       <template #footer>
@@ -71,6 +73,7 @@ const tags = ref([
     label: 'tag 4'
   }
 ])
+const defaultBgc = ref<string>('#ffffff')
 const btnClick = (): void => {
   message({ type: 'warn', message: '警告 警告！！！', closable: true, animation: 'translate' })
 }
@@ -85,6 +88,9 @@ const dialogClose = (value: boolean): void => {
 }
 const tagClose = () => {
   console.log('tag closed')
+}
+const changeBgc = (color:string) => {
+  document.body.style.backgroundColor = color
 }
 </script>
 
