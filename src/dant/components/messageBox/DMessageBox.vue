@@ -42,7 +42,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .d-message-box {
   position: absolute;
-  top: 0;
+ top: 0;
   height: 100vh;
   width: 100vw;
   z-index: 9999;
@@ -53,26 +53,28 @@ onMounted(() => {
     z-index: 9999;
     left: 50%;
     top: 20%;
+    border-radius: 5px;
     width: 20vw;
-    padding: 30px;
+    padding: 14px;
     margin-left: -10vw;
     background-color: #fff;
     border: 1px solid #ccc;
 
     .btns {
-      position: absolute;
-      right: 10px;
-      bottom: 10px;
+      text-align: right;
     }
 
     .title {
-      position: absolute;
-      left: 10px;
-      top: 10px;
+    font-size: 18px;
+    font-weight: 700;
     }
 
     .content {
-      padding: 10px 0;
+      margin: 14px 0;
+      white-space:wrap;
+      .content_default {
+        word-wrap:break-word
+      }
     }
   }
 }

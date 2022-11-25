@@ -26,7 +26,7 @@
     </div>
 
     <DDialog v-model="isShowDialog" animation="scale" width="40%" title="Dialog" @close="dialogClose">
-      <div>我是dialog内容！！！</div>
+      <div>Dialog Content</div>
       <template #footer>
         <div>
           <DButton @click="isShowDialog = false">
@@ -103,7 +103,7 @@ const showDialog = (): void => {
   isShowDialog.value = true
 }
 const showMessageBox = (): void => {
-  messageBox({ title: '我是标题！', content: "<div slot='content'>hello world</div>" })
+  messageBox({ title: '我是标题！', content: "<div slot='content'>helloworld111111111111111111111111111111111111111111111111111111111</div>" })
 }
 const dialogClose = (value: boolean): void => {
   console.log(value)

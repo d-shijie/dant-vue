@@ -3,6 +3,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import '../src/assets/css/base.css'
 const app = createApp(App)
 // 全局挂载
 createComp(app)

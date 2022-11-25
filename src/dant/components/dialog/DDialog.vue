@@ -5,7 +5,7 @@
         <h2>
           {{ title }}
         </h2>
-        <i @click="close">x</i>
+        <i @click="close">❌</i>
       </div>
 
       <div class="dialog-content">
@@ -13,6 +13,14 @@
       </div>
 
       <div class="dialog-footer">
+        <!-- <div>
+          <DButton>
+            取消
+          </DButton>
+          <DButton type="success">
+            确认
+          </DButton>
+        </div> -->
         <slot name="footer" />
       </div>
     </div>
@@ -21,6 +29,7 @@
 
 <script setup lang="ts">
 import { animations } from '../../utils/animations'
+// import DButton from '../button/DButton.vue'
 const props = defineProps({
   title: {
     type: String,
@@ -80,21 +89,18 @@ const close = () => {
       margin-bottom: 24px;
 
       i {
-        font-size: 25px;
+        font-size: 16px;
         cursor: pointer;
+        transition: all .5s;
       }
 
       i:hover {
-        color: #ccc;
+        font-size: 24px;
       }
     }
 
-    .dialog-content {
-      margin-bottom: 10px;
-    }
-
     .dialog-footer {
-      margin: 10px 0;
+      margin-top: 24px;
     }
 
   }
