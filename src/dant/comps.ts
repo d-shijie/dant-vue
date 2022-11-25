@@ -6,6 +6,7 @@ import DInput from './components/input/DInput.vue'
 import DSwiper from './components/swiper/DSwiper.vue'
 import DTag from './components/tag/DTag.vue'
 import DColorPicker from './components/colorPicker/DColorPicker.vue'
+import DPoper from './components/poper/DPoper.vue'
 export const comps = [
   DButton,
   DDialog,
@@ -13,5 +14,6 @@ export const comps = [
   DInput,
   DSwiper,
   DTag,
-  DColorPicker
+  DColorPicker,
+  DPoper
 ]

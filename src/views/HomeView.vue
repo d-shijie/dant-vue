@@ -20,7 +20,10 @@
       {{ item.label }}
     </DTag>
     <DColorPicker v-model="defaultBgc" size="small" @handle-change="changeBgc" />
-    <DSelect label="选择器：" />
+    <div>
+      <DSelect v-model="selectValue" label="选择器：" :data="selectData" @handle-change="selectChange" />
+    </div>
+
     <DDialog v-model="isShowDialog" animation="scale" width="40%" title="Dialog" @close="dialogClose">
       <div>我是dialog内容！！！</div>
       <template #footer>
@@ -41,7 +44,10 @@
 import { ref } from 'vue'
 import message from '@/dant/components/message'
 import messageBox from '@/dant/components/messageBox/index'
-
+interface ISelectData{
+  value:string|number
+  label:string|number
+}
 const iconWarn = require('@/dant/assets/icons/warn.png')
 const iconSuccess = require('@/dant/assets/icons/success.png')
 const iconDanger = require('@/dant/assets/icons/danger.png')
@@ -74,6 +80,21 @@ const tags = ref([
   }
 ])
 const defaultBgc = ref<string>('#ffffff')
+const selectData = ref<ISelectData[]>([
+  {
+    label: 'option 1',
+    value: 1
+  },
+  {
+    label: 'option 2',
+    value: 2
+  },
+  {
+    label: 'option 3',
+    value: 3
+  }
+])
+const selectValue = ref()
 const btnClick = (): void => {
   message({ type: 'warn', message: '警告 警告！！！', closable: true, animation: 'translate' })
 }
@@ -91,6 +112,9 @@ const tagClose = () => {
 }
 const changeBgc = (color:string) => {
   document.body.style.backgroundColor = color
+}
+const selectChange = (value:string|number) => {
+  console.log(value)
 }
 </script>
 
