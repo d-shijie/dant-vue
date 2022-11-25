@@ -79,7 +79,7 @@ const inputBlur = () => {
       transform: translateY(-50%);
     }
      input {
-      border-radius: 10px;
+      border-radius: 5px;
        padding: 5px;
        margin-left: 5px;
       outline: none;

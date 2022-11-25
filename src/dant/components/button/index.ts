@@ -2,7 +2,7 @@ const style:any = {
   default: {
     hoverBgc: 'blue',
     hoverColor: '#fff',
-    backgroundColor: 'rgb(239, 238, 238)',
+    backgroundColor: '#fff',
     color: '#000'
   },
   success: {

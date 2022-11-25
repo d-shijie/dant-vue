@@ -16,6 +16,7 @@
       </DButton>
     </div>
     <DInput v-model="inputValue" type="password" :label="inputValue" />
+    <DInput v-model="inputValue" :label="inputValue" />
     <DTag v-for="(item,index) in tags" :key="index" :theme="item.theme" :color="item.color" closable :type="item.type" @handle-close="tagClose">
       {{ item.label }}
     </DTag>

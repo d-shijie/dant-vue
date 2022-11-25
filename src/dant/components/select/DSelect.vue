@@ -11,14 +11,19 @@
           src="../../assets/icons/line_down.svg" alt="">
       </span>
     </span>
-    <div v-show="extendPopover" class="d-select__little" />
-    <ul v-show="extendPopover" class="d-select__options">
-      <li
-        v-for="(item, index) in data" :key="index" class="d-select__option"
-        :class="{'d-select__option__active': item.value === modelValue}" @click="handleOptionClick(item.value)">
-        {{ item.label }}
-      </li>
-    </ul>
+    <div
+      v-show="extendPopover"
+      :class="[extendPopover?'d-select__options__wrapper__active':'d-select__options__wrapper__deactive']"
+      class="d-select__options__wrapper">
+      <div class="d-select__little" />
+      <ul class="d-select__options">
+        <li
+          v-for="(item, index) in data" :key="index" class="d-select__option"
+          :class="{'d-select__option__active': item.value === modelValue}" @click="handleOptionClick(item.value)">
+          {{ item.label }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -69,6 +74,7 @@ const activeOption = computed(() => {
 
 <style scoped lang="scss">
 .d-select {
+ position: relative;
   display: inline-flex;
   flex-direction: column;
 }
@@ -107,12 +113,16 @@ const activeOption = computed(() => {
     text-align: center;
 
     img {
-      width: 80%;
+      width: 60%;
       height: 100%;
     }
   }
 }
-
+.d-select__options__wrapper{
+  position:absolute;
+  width: 100%;
+  top: 36px;
+}
 .d-select__little {
   width: 8px;
   height: 8px;
@@ -160,7 +170,7 @@ const activeOption = computed(() => {
 }
 
 .d-select__icon__active {
-  animation: IRotate ease-in .35s;
+  animation: IRotate ease-in .25s;
   transform: rotate(-180deg);
 }
 
@@ -187,7 +197,7 @@ const activeOption = computed(() => {
 }
 
 .d-select__icon__deActive {
-  animation: IDeRotate ease-in .35s;
+  animation: IDeRotate ease-in .25s;
   transform: rotate(0deg);
 
 }
@@ -213,4 +223,30 @@ const activeOption = computed(() => {
     transform: rotate(0deg);
   }
 }
+.d-select__options__wrapper__active{
+  animation: IOptionShow ease-in 0.75s;
+}
+@keyframes IOptionShow {
+  0% {
+    opacity: 0;
+    height: 0%;
+  }
+ 25% {
+    opacity: 0.25;
+    height:25%;
+  }
+  50%{
+    opacity: 0.5;
+    height:50%;
+  }
+  75% {
+    opacity: 0.75;
+    height:75%;
+  }
+  100% {
+    opacity: 1;
+    height:100%;
+  }
+}
+
 </style>
