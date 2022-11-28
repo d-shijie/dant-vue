@@ -22,10 +22,10 @@
     </DTag>
     <DColorPicker v-model="defaultBgc" size="small" @handle-change="changeBgc" />
     <div>
-      <DSelect v-model="selectValue" label="单选：" :data="selectData" @handle-change="selectChange" />
+      <DSelect v-model="selectValue" clearable label="单选：" :data="selectData" @handle-change="selectChange" />
     </div>
     <div>
-      <DSelect v-model="selectValueMut" multiple label="多选：" :data="selectData" @handle-tag-close="selectTagClose" @handle-change="selectChangeMut" />
+      <DSelect v-model="selectValueMut" multiple label="多选：" clearable :data="selectData" @handle-clear="selectClear" @handle-tag-close="selectTagClose" @handle-change="selectChangeMut" />
     </div>
     <DDialog v-model="isShowDialog" animation="scale" width="40%" title="Dialog" @close="dialogClose">
       <div>Dialog Content</div>
@@ -129,6 +129,9 @@ const selectChangeMut = (value:any[]) => {
 }
 const selectTagClose = (value:any[]) => {
   console.log(value)
+}
+const selectClear = () => {
+  console.log('select clear')
 }
 </script>
 

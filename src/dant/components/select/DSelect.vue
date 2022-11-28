@@ -11,7 +11,9 @@
       <span :style="[{border: (extendPopover ? '1px solid #409eff' : '')}]" class="d-select__icon">
         <img
           :class="[extendPopover ? 'd-select__icon__active' : 'd-select__icon__deActive']"
-          src="../../assets/icons/line_down.svg" alt="">
+          :src="iconImg"
+          alt=""
+          @click.stop="clear">
       </span>
     </span>
     <div
@@ -32,7 +34,7 @@
 
 <script setup lang="ts">
 import { computed } from '@vue/reactivity'
-import { PropType, ref } from 'vue'
+import { PropType, ref, watch } from 'vue'
 // import DTag from '../tag/DTag.vue'
 // import DPoper from '../poper/DPoper.vue'
 interface DantSelect {
@@ -63,12 +65,14 @@ const props = defineProps({
     default: false
   }
 })
-const emits = defineEmits(['handleSelectClick', 'update:modelValue', 'handleChange', 'handleTagClose'])
+const emits = defineEmits(['handleSelectClick', 'update:modelValue', 'handleChange', 'handleTagClose', 'handleClear'])
 // 控制popover的显示与隐藏
 const extendPopover = ref<boolean>(false)
 const multipleData = ref<unknown[]>([])
+const iconImg = ref(require('../../assets/icons/line_down.svg'))
 const handleSelectClick = () => {
   extendPopover.value = !extendPopover.value
+
   emits('handleSelectClick', extendPopover.value)
 }
 const handleOptionClick = (value: number | string) => {
@@ -89,6 +93,7 @@ const handleOptionClick = (value: number | string) => {
   emits('update:modelValue', updateValue)
   emits('handleChange', updateValue)
 }
+// 多选tag删除
 const closeTag = (item:DantSelect) => {
   const index = multipleData.value.findIndex(value => {
     return value === item.value
@@ -98,6 +103,12 @@ const closeTag = (item:DantSelect) => {
     emits('update:modelValue', multipleData.value)
     emits('handleTagClose', multipleData.value)
   }
+}
+// 清空
+const clear = () => {
+  emits('update:modelValue', undefined)
+  emits('handleClear')
+  multipleData.value = []
 }
 // 已选择的项的label
 const activeOption = computed(() => {
@@ -120,6 +131,19 @@ const filterHasSingleValue = (target:string|number):boolean => {
     return item === target
   })
 }
+watch(() => props.modelValue, (value) => {
+  let validate = value
+  validate = typeof validate === 'number' ? String(validate) : validate
+
+  if (props.clearable && validate.length) {
+    iconImg.value = require('../../assets/icons/close.svg')
+  } else {
+    iconImg.value = require('../../assets/icons/line_down.svg')
+  }
+},
+{
+  deep: true
+})
 </script>
 
 <style scoped lang="scss">
