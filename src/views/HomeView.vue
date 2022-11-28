@@ -24,7 +24,9 @@
     <div>
       <DSelect v-model="selectValue" label="选择器：" :data="selectData" @handle-change="selectChange" />
     </div>
-
+    <div>
+      <DSelect v-model="selectValueMut" multiple label="选择器：" :data="selectData" @handle-change="selectChangeMut" />
+    </div>
     <DDialog v-model="isShowDialog" animation="scale" width="40%" title="Dialog" @close="dialogClose">
       <div>Dialog Content</div>
       <template #footer>
@@ -93,9 +95,14 @@ const selectData = ref<ISelectData[]>([
   {
     label: 'option 3',
     value: 3
+  },
+  {
+    label: 'option 4',
+    value: 4
   }
 ])
-const selectValue = ref()
+const selectValue = ref<unknown>()
+const selectValueMut = ref<unknown>([])
 const btnClick = (): void => {
   message({ type: 'warn', message: '警告 警告！！！', closable: true, animation: 'translate' })
 }
@@ -115,7 +122,10 @@ const changeBgc = (color:string) => {
   document.body.style.backgroundColor = color
 }
 const selectChange = (value:string|number) => {
-  console.log(value)
+  console.log('单选select', value)
+}
+const selectChangeMut = (value:[]) => {
+  console.log('多选select', value)
 }
 </script>
 

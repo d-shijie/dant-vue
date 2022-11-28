@@ -3,7 +3,10 @@
     <span class="d-select__wrapper" @click="handleSelectClick">
       {{ label }}
       <span id="d-select" :style="[{border: (extendPopover ? '1px solid #409eff' : '')}]">
-        {{ activeOption }}
+        <span v-if="multiple">
+          <DTag v-for="(item, index) in activeMutOption" :key="index + new Date().getTime()"> {{ item?.label }}</DTag>
+        </span>
+        {{ !multiple ? activeOption : '' }}
       </span>
       <span :style="[{border: (extendPopover ? '1px solid #409eff' : '')}]" class="d-select__icon">
         <img
@@ -13,7 +16,7 @@
     </span>
     <div
       v-show="extendPopover"
-      :class="[extendPopover?'d-select__options__wrapper__active':'d-select__options__wrapper__deactive']"
+      :class="[extendPopover ? 'd-select__options__wrapper__active' : 'd-select__options__wrapper__deactive']"
       class="d-select__options__wrapper">
       <div class="d-select__little" />
       <ul class="d-select__options">
@@ -30,6 +33,7 @@
 <script setup lang="ts">
 import { computed } from '@vue/reactivity'
 import { PropType, ref } from 'vue'
+// import DTag from '../tag/DTag.vue'
 // import DPoper from '../poper/DPoper.vue'
 interface DantSelect {
   value: string | number
@@ -37,7 +41,7 @@ interface DantSelect {
 }
 const props = defineProps({
   modelValue: {
-    type: [String, Number],
+    type: [String, Number, Array],
     default: ''
   },
   data: {
@@ -47,22 +51,42 @@ const props = defineProps({
   label: {
     type: String,
     default: ''
+  },
+  // 多选
+  multiple: {
+    type: Boolean,
+    default: false
+  },
+  // 可清空
+  clearable: {
+    type: Boolean,
+    default: false
   }
 })
 const emits = defineEmits(['handleSelectClick', 'update:modelValue', 'handleChange'])
 const extendPopover = ref<boolean>(false)
+const multipleData = ref<unknown[]>([])
 const handleSelectClick = () => {
   extendPopover.value = !extendPopover.value
   emits('handleSelectClick', extendPopover.value)
 }
 const handleOptionClick = (value: number | string) => {
   extendPopover.value = !extendPopover.value
-  // 选择当前已选择的项不做处理
-  if (value === props.modelValue) {
-    return
+  const updateValue = props.multiple ? multipleData.value : value
+  // 不是多选时
+  if (!props.multiple) {
+    // 选择当前已选择的项不做处理
+    if (value === props.modelValue) {
+      return
+    }
+  } else {
+    const index = multipleData.value.findIndex(item => {
+      return item === value
+    })
+    index !== -1 ? multipleData.value.splice(index, 1) : multipleData.value.push(value)
   }
-  emits('update:modelValue', value)
-  emits('handleChange', value)
+  emits('update:modelValue', updateValue)
+  emits('handleChange', updateValue)
 }
 // 已选择的项的label
 const activeOption = computed(() => {
@@ -70,11 +94,28 @@ const activeOption = computed(() => {
     return item.value === props.modelValue
   })?.label
 })
+// 多选已选项
+const activeMutOption = computed(() => {
+  const result = multipleData.value.map(value => {
+    return props.data.find(data => {
+      return data.value === value
+    })
+  })
+  return result
+})
+
 </script>
 
 <style scoped lang="scss">
+.d-tag {
+  color: #f4f4f5;
+  height: 14px;
+  line-height: 14px;
+  margin-left: 0 !important;
+}
+
 .d-select {
- position: relative;
+  position: relative;
   display: inline-flex;
   flex-direction: column;
 }
@@ -91,7 +132,9 @@ const activeOption = computed(() => {
     padding: 0 10px;
     line-height: 30px;
     text-align: left;
-    display: inline-block;
+    // display: inline-block;
+    align-items: center;
+    display: flex;
     height: 30px;
     outline: none !important;
     border-radius: 5px 0 0 5px;
@@ -118,11 +161,13 @@ const activeOption = computed(() => {
     }
   }
 }
-.d-select__options__wrapper{
-  position:absolute;
+
+.d-select__options__wrapper {
+  position: absolute;
   width: 100%;
   top: 36px;
 }
+
 .d-select__little {
   width: 8px;
   height: 8px;
@@ -223,30 +268,35 @@ const activeOption = computed(() => {
     transform: rotate(0deg);
   }
 }
-.d-select__options__wrapper__active{
-  animation: IOptionShow ease-in 0.75s;
+
+.d-select__options__wrapper__active {
+  animation: IOptionShow ease-in 0.35s;
 }
+
 @keyframes IOptionShow {
   0% {
     opacity: 0;
     height: 0%;
   }
- 25% {
+
+  25% {
     opacity: 0.25;
-    height:25%;
+    height: 25%;
   }
-  50%{
+
+  50% {
     opacity: 0.5;
-    height:50%;
+    height: 50%;
   }
+
   75% {
     opacity: 0.75;
-    height:75%;
+    height: 75%;
   }
+
   100% {
     opacity: 1;
-    height:100%;
+    height: 100%;
   }
 }
-
 </style>

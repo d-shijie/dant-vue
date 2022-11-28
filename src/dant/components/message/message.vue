@@ -72,8 +72,8 @@ const style: any = {
   justify-content: center;
   border-radius: 15px;
   color: rgb(111, 111, 111);
-  border: 1px solid #ccc;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, .3);
+  // border: 1px solid #ccc;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, .3);
   background-color: rgb(207, 205, 205);
 
   .content {
