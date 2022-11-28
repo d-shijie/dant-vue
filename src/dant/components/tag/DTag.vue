@@ -1,7 +1,9 @@
 <template>
   <div v-if="isTagVisible" ref="tagRef" :style="types[theme][type]" class="d-tag">
     <slot />
-    <span v-if="closable" ref="dTagCloseRef" class="d-tag__close" @mouseleave="onMouseLeave" @mouseenter="onMouseEnter" @click="handleClose">❌</span>
+    <span
+      v-if="closable" ref="dTagCloseRef" class="d-tag__close" @mouseleave="onMouseLeave" @mouseenter="onMouseEnter"
+      @click.stop="handleClose">❌</span>
   </div>
 </template>
 
@@ -36,10 +38,10 @@ const handleClose = () => {
 }
 const onMouseEnter = () => {
   switch (props.theme) {
-    case 'light' :
+    case 'light':
       dTagCloseRef.value.style.backgroundColor = types[props.theme][props.type].color ? types[props.theme][props.type].color : types[props.theme][props.type][props.color]
       break
-    case 'dark' :
+    case 'dark':
       dTagCloseRef.value.style.backgroundColor = 'rgba(0,0,0,.1)'
       break
   }
@@ -71,12 +73,14 @@ onMounted(() => {
     margin-left: 3px;
     cursor: pointer;
     padding: 3px 2px;
+
     &:hover {
 
       border-radius: 50%;
       font-size: 10px;
     }
   }
+
   // &::after {
   //   content: "❌";
   //   margin-left: 5px;

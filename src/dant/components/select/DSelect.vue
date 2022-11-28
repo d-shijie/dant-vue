@@ -4,7 +4,7 @@
       {{ label }}
       <span id="d-select" :style="[{border: (extendPopover ? '1px solid #409eff' : '')}]">
         <span v-if="multiple">
-          <DTag v-for="(item, index) in filterHasMultipleValue" :key="index + new Date().getTime()"> {{ item?.label }}</DTag>
+          <DTag v-for="(item, index) in filterHasMultipleValue" :key="index + new Date().getTime()" closable @handle-close="closeTag(item as DantSelect)"> {{ item?.label }}</DTag>
         </span>
         {{ !multiple ? activeOption : '' }}
       </span>
@@ -63,7 +63,7 @@ const props = defineProps({
     default: false
   }
 })
-const emits = defineEmits(['handleSelectClick', 'update:modelValue', 'handleChange'])
+const emits = defineEmits(['handleSelectClick', 'update:modelValue', 'handleChange', 'handleTagClose'])
 // 控制popover的显示与隐藏
 const extendPopover = ref<boolean>(false)
 const multipleData = ref<unknown[]>([])
@@ -88,6 +88,16 @@ const handleOptionClick = (value: number | string) => {
   }
   emits('update:modelValue', updateValue)
   emits('handleChange', updateValue)
+}
+const closeTag = (item:DantSelect) => {
+  const index = multipleData.value.findIndex(value => {
+    return value === item.value
+  })
+  if (index !== -1) {
+    multipleData.value.splice(index, 1)
+    emits('update:modelValue', multipleData.value)
+    emits('handleTagClose', multipleData.value)
+  }
 }
 // 已选择的项的label
 const activeOption = computed(() => {

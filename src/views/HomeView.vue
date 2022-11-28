@@ -25,7 +25,7 @@
       <DSelect v-model="selectValue" label="单选：" :data="selectData" @handle-change="selectChange" />
     </div>
     <div>
-      <DSelect v-model="selectValueMut" multiple label="多选：" :data="selectData" @handle-change="selectChangeMut" />
+      <DSelect v-model="selectValueMut" multiple label="多选：" :data="selectData" @handle-tag-close="selectTagClose" @handle-change="selectChangeMut" />
     </div>
     <DDialog v-model="isShowDialog" animation="scale" width="40%" title="Dialog" @close="dialogClose">
       <div>Dialog Content</div>
@@ -124,8 +124,11 @@ const changeBgc = (color:string) => {
 const selectChange = (value:string|number) => {
   console.log('单选select', value)
 }
-const selectChangeMut = (value:[]) => {
+const selectChangeMut = (value:any[]) => {
   console.log('多选select', value)
+}
+const selectTagClose = (value:any[]) => {
+  console.log(value)
 }
 </script>
 
