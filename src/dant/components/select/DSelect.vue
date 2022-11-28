@@ -4,7 +4,7 @@
       {{ label }}
       <span id="d-select" :style="[{border: (extendPopover ? '1px solid #409eff' : '')}]">
         <span v-if="multiple">
-          <DTag v-for="(item, index) in activeMutOption" :key="index + new Date().getTime()"> {{ item?.label }}</DTag>
+          <DTag v-for="(item, index) in filterHasMultipleValue" :key="index + new Date().getTime()"> {{ item?.label }}</DTag>
         </span>
         {{ !multiple ? activeOption : '' }}
       </span>
@@ -22,7 +22,7 @@
       <ul class="d-select__options">
         <li
           v-for="(item, index) in data" :key="index" class="d-select__option"
-          :class="{'d-select__option__active': item.value === modelValue}" @click="handleOptionClick(item.value)">
+          :class="{'d-select__option__active': multiple? filterHasSingleValue(item.value) : item.value === modelValue}" @click="handleOptionClick(item.value)">
           {{ item.label }}
         </li>
       </ul>
@@ -64,6 +64,7 @@ const props = defineProps({
   }
 })
 const emits = defineEmits(['handleSelectClick', 'update:modelValue', 'handleChange'])
+// 控制popover的显示与隐藏
 const extendPopover = ref<boolean>(false)
 const multipleData = ref<unknown[]>([])
 const handleSelectClick = () => {
@@ -95,7 +96,7 @@ const activeOption = computed(() => {
   })?.label
 })
 // 多选已选项
-const activeMutOption = computed(() => {
+const filterHasMultipleValue = computed(() => {
   const result = multipleData.value.map(value => {
     return props.data.find(data => {
       return data.value === value
@@ -103,7 +104,12 @@ const activeMutOption = computed(() => {
   })
   return result
 })
-
+// 筛选数组中对应值的单个元素
+const filterHasSingleValue = (target:string|number):boolean => {
+  return !!multipleData.value.find(item => {
+    return item === target
+  })
+}
 </script>
 
 <style scoped lang="scss">
@@ -270,7 +276,7 @@ const activeMutOption = computed(() => {
 }
 
 .d-select__options__wrapper__active {
-  animation: IOptionShow ease-in 0.35s;
+  animation: IOptionShow ease-in 0.25s;
 }
 
 @keyframes IOptionShow {

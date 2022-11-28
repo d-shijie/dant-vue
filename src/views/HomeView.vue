@@ -22,10 +22,10 @@
     </DTag>
     <DColorPicker v-model="defaultBgc" size="small" @handle-change="changeBgc" />
     <div>
-      <DSelect v-model="selectValue" label="选择器：" :data="selectData" @handle-change="selectChange" />
+      <DSelect v-model="selectValue" label="单选：" :data="selectData" @handle-change="selectChange" />
     </div>
     <div>
-      <DSelect v-model="selectValueMut" multiple label="选择器：" :data="selectData" @handle-change="selectChangeMut" />
+      <DSelect v-model="selectValueMut" multiple label="多选：" :data="selectData" @handle-change="selectChangeMut" />
     </div>
     <DDialog v-model="isShowDialog" animation="scale" width="40%" title="Dialog" @close="dialogClose">
       <div>Dialog Content</div>
