@@ -106,9 +106,11 @@ const closeTag = (item:DantSelect) => {
 }
 // 清空
 const clear = () => {
-  emits('update:modelValue', undefined)
-  emits('handleClear')
-  multipleData.value = []
+  if (props.clearable) {
+    emits('update:modelValue', undefined)
+    emits('handleClear')
+    multipleData.value = []
+  }
 }
 // 已选择的项的label
 const activeOption = computed(() => {
