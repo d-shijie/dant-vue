@@ -4,15 +4,15 @@
       {{ label }}
       <span id="d-select" :style="[{border: (extendPopover ? '1px solid #409eff' : '')}]">
         <span v-if="multiple">
-          <DTag v-for="(item, index) in filterHasMultipleValue" :key="index + new Date().getTime()" closable @handle-close="closeTag(item as DantSelect)"> {{ item?.label }}</DTag>
+          <DTag
+            v-for="(item, index) in filterHasMultipleValue" :key="index + new Date().getTime()" closable
+            @handle-close="closeTag(item as any)"> {{ item?.label }}</DTag>
         </span>
         {{ !multiple ? activeOption : '' }}
       </span>
       <span :style="[{border: (extendPopover ? '1px solid #409eff' : '')}]" class="d-select__icon">
         <img
-          :class="[extendPopover ? 'd-select__icon__active' : 'd-select__icon__deActive']"
-          :src="iconImg"
-          alt=""
+          :class="[extendPopover ? 'd-select__icon__active' : 'd-select__icon__deActive']" :src="iconImg" alt=""
           @click.stop="clear">
       </span>
     </span>
@@ -24,7 +24,8 @@
       <ul class="d-select__options">
         <li
           v-for="(item, index) in data" :key="index" class="d-select__option"
-          :class="{'d-select__option__active': multiple? filterHasSingleValue(item.value) : item.value === modelValue}" @click="handleOptionClick(item.value)">
+          :class="{'d-select__option__active': multiple ? filterHasSingleValue(item.value) : item.value === modelValue}"
+          @click="handleOptionClick(item.value)">
           {{ item.label }}
         </li>
       </ul>
@@ -67,7 +68,7 @@ const props = defineProps({
 })
 const emits = defineEmits(['handleSelectClick', 'update:modelValue', 'handleChange', 'handleTagClose', 'handleClear'])
 onMounted(() => {
-  document.addEventListener('click', (e:any) => {
+  document.addEventListener('click', (e: any) => {
     if (e.target.id !== 'd-select') {
       extendPopover.value = false
     }
@@ -104,7 +105,7 @@ const handleOptionClick = (value: number | string) => {
   emits('handleChange', updateValue)
 }
 // 多选tag删除
-const closeTag = (item:DantSelect) => {
+const closeTag = (item: DantSelect) => {
   const index = multipleData.value.findIndex(value => {
     return value === item.value
   })
@@ -138,7 +139,7 @@ const filterHasMultipleValue = computed(() => {
   return result
 })
 // 筛选数组中对应值的单个元素
-const filterHasSingleValue = (target:string|number):boolean => {
+const filterHasSingleValue = (target: string | number): boolean => {
   return !!multipleData.value.find(item => {
     return item === target
   })
