@@ -1,6 +1,6 @@
 <template>
   <div class="d-select">
-    <span class="d-select__wrapper" @click="handleSelectClick">
+    <span class="d-select__wrapper" @click.prevent="handleSelectClick">
       {{ label }}
       <span id="d-select" :style="[{border: (extendPopover ? '1px solid #409eff' : '')}]">
         <span v-if="multiple">
@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import { computed } from '@vue/reactivity'
-import { PropType, ref, watch } from 'vue'
+import { onMounted, PropType, ref, watch } from 'vue'
 // import DTag from '../tag/DTag.vue'
 // import DPoper from '../poper/DPoper.vue'
 interface DantSelect {
@@ -66,6 +66,13 @@ const props = defineProps({
   }
 })
 const emits = defineEmits(['handleSelectClick', 'update:modelValue', 'handleChange', 'handleTagClose', 'handleClear'])
+onMounted(() => {
+  document.addEventListener('click', (e:any) => {
+    if (e.target.id !== 'd-select') {
+      extendPopover.value = false
+    }
+  })
+})
 // 控制popover的显示与隐藏
 const extendPopover = ref<boolean>(false)
 const multipleData = ref<unknown[]>([])
@@ -76,7 +83,10 @@ const handleSelectClick = () => {
   emits('handleSelectClick', extendPopover.value)
 }
 const handleOptionClick = (value: number | string) => {
-  extendPopover.value = !extendPopover.value
+  if (props.multiple) {
+    extendPopover.value = !extendPopover.value
+  }
+
   const updateValue = props.multiple ? multipleData.value : value
   // 不是多选时
   if (!props.multiple) {
