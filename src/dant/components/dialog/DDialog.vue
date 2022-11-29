@@ -74,6 +74,7 @@ const close = () => {
   .content {
     width: 40%;
     padding: 10px;
+    border-radius: 5px;
     background-color: #fff;
     transform: translateX(-50%);
     position: absolute;

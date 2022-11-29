@@ -34,6 +34,16 @@
     <div>
       <DSwitch active-text="是" de-active-text="否" @handle-change="switchChange" />
     </div>
+    <div>
+      <DCard>
+        <template #header>
+          <div>
+            111
+          </div>
+        </template>
+        <div>1111111111</div>
+      </DCard>
+    </div>
     <DDialog v-model="isShowDialog" animation="scale" width="40%" title="Dialog" @close="dialogClose">
       <div>Dialog Content</div>
       <template #footer>

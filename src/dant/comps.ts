@@ -8,6 +8,7 @@ import DTag from './components/tag/DTag.vue'
 import DColorPicker from './components/colorPicker/DColorPicker.vue'
 import DPoper from './components/poper/DPoper.vue'
 import DSwitch from './components/switch/DSwitch.vue'
+import DCard from './components/card/DCard.vue'
 export const comps = [
   DButton,
   DDialog,
@@ -17,5 +18,6 @@ export const comps = [
   DTag,
   DColorPicker,
   DPoper,
-  DSwitch
+  DSwitch,
+  DCard
 ]
