@@ -91,7 +91,7 @@ const close = () => {
       i {
         font-size: 16px;
         cursor: pointer;
-        transition: all .5s;
+        transition: all .25s;
       }
 
       i:hover {

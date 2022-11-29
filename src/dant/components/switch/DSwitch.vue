@@ -1,6 +1,9 @@
 <template>
-  <div :style="[{backgroundColor: (control?'blue':'#dfdfdf')}]" class="d-switch">
-    <div :class="[control?'d-switch__right':'d-switch__left']" class="d-switch__control" @click="change" />
+  <div :style="[{backgroundColor: (control ? 'blue' : '#dfdfdf')}]" class="d-switch" @click="change">
+    <div :class="[control ? 'd-switch__right' : 'd-switch__left']" class="d-switch__control" />
+    <div class="d-switch__text" :style="[{float: (control?'left':'right')}]">
+      {{ control ? activeText : deActiveText }}
+    </div>
   </div>
 </template>
 
@@ -11,6 +14,14 @@ defineProps({
   modelValue: {
     type: Boolean,
     default: true
+  },
+  activeText: {
+    type: String,
+    default: ''
+  },
+  deActiveText: {
+    type: String,
+    default: ''
   }
 })
 
@@ -31,20 +42,31 @@ const change = () => {
   width: 70px;
   border-radius: 15px;
   height: 30px;
+
   background-color: #dfdfdf;
+  cursor: pointer;
+
   .d-switch__control {
     width: 24px;
     height: 24px;
     margin-left: 3px;
     border-radius: 50%;
     background-color: rgb(255, 255, 255);
-    cursor: pointer;
+  }
+
+  .d-switch__text {
+    display: flex;
+    margin-left: 1px;
+    font-size: 15px;
+    color: #fff;
   }
 }
+
 .d-switch__right {
   animation: ITranslateRight ease-in 0.25s;
   transform: translateX(40px);
 }
+
 @keyframes ITranslateRight {
   0% {
     transform: translateX(0);
@@ -66,10 +88,12 @@ const change = () => {
     transform: translateX(40px);
   }
 }
-.d-switch__left{
+
+.d-switch__left {
   animation: ITranslateLeft ease-in 0.25s;
   transform: translateX(0px);
 }
+
 @keyframes ITranslateLeft {
   0% {
     transform: translateX(40px);
