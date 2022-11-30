@@ -6,6 +6,9 @@
     <div class="d-card__content">
       <slot />
     </div>
+    <div ref="dantCardMeta" class="d-card__meta">
+      <slot name="meta" />
+    </div>
   </div>
 </template>
 
@@ -18,9 +21,12 @@ defineProps({
   }
 })
 const dantCardHeader = ref()
+const dantCardMeta = ref()
 const useHeaderSlot = !!useSlots().header
+const useMetaSlot = !!useSlots().meta
 onMounted(() => {
   dantCardHeader.value.style.padding = useHeaderSlot ? '20px' : '0px'
+  dantCardMeta.value.style.padding = useMetaSlot ? '20px' : '0px'
 })
 
 </script>
@@ -34,6 +40,9 @@ onMounted(() => {
   border-radius: 5px;
   .d-card__header{
      border-bottom: 1px solid #e4e7ed;
+  }
+  .d-card__meta {
+    border-top: 1px solid #e4e7ed;
   }
   .d-card__content{
     padding: 20px ;
