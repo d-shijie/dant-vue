@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <div ref="dantPopoverTrigger" class="d-poper__trigger" @click="referenceClick">
+    <div ref="dantPopoverTrigger" class="d-poper__trigger" @mouseleave="referenceLeave" @mouseenter="referenceHover" @click="referenceClick">
       <slot />
     </div>
   </div>
@@ -27,6 +27,10 @@ const props = defineProps({
     type: String,
     default: ''
   },
+  trigger: {
+    type: String,
+    default: 'hover' // click hover
+  },
   place: {
     type: String,
     default: 'top'
@@ -36,17 +40,37 @@ const dantPopoverMain = ref()
 const dantPopoverTrigger = ref()
 const dantPopoverTitle = ref()
 const dantPopoverContent = ref()
-const showPopover = ref<boolean>(false)
+const popoverVissble = ref<boolean>(false)
 const referenceClick = () => {
-  showPopover.value = !showPopover.value
-  dantPopoverMain.value.style.opacity = showPopover.value ? '1' : '0'
+  if (props.trigger === 'click') {
+    showPopover()
+  } else {
+    return false
+  }
+}
+const referenceHover = () => {
+  if (props.trigger === 'hover') {
+    showPopover()
+  } else {
+    return false
+  }
+}
+const referenceLeave = () => {
+  if (props.trigger === 'hover') {
+    popoverVissble.value = false
+    dantPopoverMain.value.style.opacity = '0'
+  } else {
+    return false
+  }
+}
+const showPopover = () => {
+  popoverVissble.value = !popoverVissble.value
+  dantPopoverMain.value.style.opacity = popoverVissble.value ? '1' : '0'
   const width = dantPopoverMain.value.offsetWidth
   const height = dantPopoverMain.value.offsetHeight
   const x = dantPopoverTrigger.value.offsetWidth
   const y = dantPopoverTrigger.value.offsetHeight
   const cHeight = dantPopoverContent.value.offsetHeight + dantPopoverTitle.value.offsetHeight
-  console.log(cHeight)
-
   dantPopoverMain.value.style.height = cHeight
   switch (props.place) {
     case 'top':
