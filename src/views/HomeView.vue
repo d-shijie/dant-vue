@@ -47,10 +47,10 @@
           </div>
         </template>
         <div>
-          <d-poper title="Popover">
+          <d-poper width="200" title="Popover">
             <template #content>
               <div>
-                Popover Content
+                Popover Content！！！！！！！！
               </div>
             </template>
             <d-button>

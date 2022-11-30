@@ -1,10 +1,10 @@
 <template>
   <div class="d-poper">
-    <div ref="dantPopoverMain" :style="{'min-width': '150px', 'width': width}" class="d-poper__main">
-      <div class="d-poper__title">
+    <div ref="dantPopoverMain" class="d-poper__main">
+      <div ref="dantPopoverTitle" class="d-poper__title">
         {{ title }}
       </div>
-      <div class="d-poper__content">
+      <div ref="dantPopoverContent" :style="{'min-width': '150px', 'max-width': width+'px'}" class="d-poper__content">
         <slot name="content" />
       </div>
     </div>
@@ -29,11 +29,13 @@ const props = defineProps({
   },
   place: {
     type: String,
-    default: 'left'
+    default: 'top'
   }// top bottom left right
 })
 const dantPopoverMain = ref()
 const dantPopoverTrigger = ref()
+const dantPopoverTitle = ref()
+const dantPopoverContent = ref()
 const showPopover = ref<boolean>(false)
 const referenceClick = () => {
   showPopover.value = !showPopover.value
@@ -42,6 +44,10 @@ const referenceClick = () => {
   const height = dantPopoverMain.value.offsetHeight
   const x = dantPopoverTrigger.value.offsetWidth
   const y = dantPopoverTrigger.value.offsetHeight
+  const cHeight = dantPopoverContent.value.offsetHeight + dantPopoverTitle.value.offsetHeight
+  console.log(cHeight)
+
+  dantPopoverMain.value.style.height = cHeight
   switch (props.place) {
     case 'top':
       dantPopoverMain.value.style.left = 0
@@ -75,15 +81,14 @@ const referenceClick = () => {
   .d-poper__main {
     position: absolute;
     opacity: 0;
-    top:-80px;
+    transform: translateY(-100%);
     background-color: #fff;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, .1), -2px -2px 8px rgba(0, 0, 0, .1);
     border: 1px solid #e3e7ed;
     border-radius: 5px;
-    display: inline-block;
-
+    display:inline-block;
     transition: all 0.5s;
-
+    word-wrap:break-all;
     .d-poper__title {
       padding: 10px;
       border-bottom: 1px solid #e3e7ed;
@@ -91,6 +96,7 @@ const referenceClick = () => {
 
     .d-poper__content {
       padding: 10px;
+      display:inline-block;
       word-wrap:break-word;
     }
   }
