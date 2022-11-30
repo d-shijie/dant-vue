@@ -38,15 +38,26 @@
       <DCard>
         <template #header>
           <div>
-            111
+            Card Header
           </div>
         </template>
         <template #meta>
           <div>
-            111
+            Card Meta
           </div>
         </template>
-        <div>1111111111</div>
+        <div>
+          <d-poper title="Popover">
+            <template #content>
+              <div>
+                Popover Content
+              </div>
+            </template>
+            <d-button>
+              显示poper
+            </d-button>
+          </d-poper>
+        </div>
       </DCard>
     </div>
     <DDialog v-model="isShowDialog" animation="scale" width="40%" title="Dialog" @close="dialogClose">
