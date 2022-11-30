@@ -1,6 +1,6 @@
 <template>
   <div class="d-card">
-    <div class="d-card__header">
+    <div ref="dantCardHeader" class="d-card__header">
       <slot name="header" />
     </div>
     <div class="d-card__content">
@@ -10,12 +10,19 @@
 </template>
 
 <script setup lang="ts">
+import { useSlots, ref, onMounted } from 'vue'
 defineProps({
   title: {
     type: String,
     default: ''
   }
 })
+const dantCardHeader = ref()
+const useHeaderSlot = !!useSlots().header
+onMounted(() => {
+  dantCardHeader.value.style.padding = useHeaderSlot ? '20px' : '0px'
+})
+
 </script>
 
 <style scoped lang="scss">
@@ -27,7 +34,6 @@ defineProps({
   border-radius: 5px;
   .d-card__header{
      border-bottom: 1px solid #e4e7ed;
-     padding: 20px;
   }
   .d-card__content{
     padding: 20px ;
