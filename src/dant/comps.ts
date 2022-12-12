@@ -9,6 +9,7 @@ import DColorPicker from './components/colorPicker/DColorPicker.vue'
 import DPoper from './components/poper/DPoper.vue'
 import DSwitch from './components/switch/DSwitch.vue'
 import DCard from './components/card/DCard.vue'
+import DSlider from './components/slider/DSlider.vue'
 export const comps = [
   DButton,
   DDialog,
@@ -19,5 +20,6 @@ export const comps = [
   DColorPicker,
   DPoper,
   DSwitch,
-  DCard
+  DCard,
+  DSlider
 ]

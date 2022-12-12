@@ -1,4 +1,4 @@
-# comp
+# dant-vue
 
 ## Project setup
 ```

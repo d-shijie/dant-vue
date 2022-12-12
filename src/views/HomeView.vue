@@ -43,7 +43,7 @@
         </template>
         <template #meta>
           <div>
-            Card Meta
+            <d-slider />
           </div>
         </template>
         <div>
