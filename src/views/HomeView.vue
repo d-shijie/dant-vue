@@ -43,7 +43,7 @@
         </template>
         <template #meta>
           <div>
-            <d-slider />
+            <d-slider v-model="sliderValue" />
           </div>
         </template>
         <div>
@@ -136,6 +136,7 @@ const selectData = ref<ISelectData[]>([
 ])
 const selectValue = ref<unknown>()
 const selectValueMut = ref<unknown>([])
+const sliderValue = ref<number|string>(50)
 const btnClick = (): void => {
   message({ type: 'warn', message: '警告 警告！！！', closable: true, animation: 'translate' })
 }
@@ -143,7 +144,7 @@ const showDialog = (): void => {
   isShowDialog.value = true
 }
 const showMessageBox = (): void => {
-  messageBox({ title: '我是标题！', content: "<div slot='content'>helloworld111111111111111111111111111111111111111111111111111111111</div>" })
+  messageBox({ title: '我是标题！', content: "<div slot='content'>helloworld</div>" })
 }
 const dialogClose = (value: boolean): void => {
   console.log(value)

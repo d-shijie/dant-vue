@@ -6,8 +6,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-defineProps({
+import { ref, onMounted } from 'vue'
+const props = defineProps({
   modelValue: {
     type: [String, Number],
     default: 0
@@ -26,7 +26,11 @@ const handleClick = (e:any) => {
   contentRef.value.style.width = dantSliderTagRef.value.style.left
   contentRef.value.style.background = 'blue'
 }
-
+onMounted(() => {
+  contentRef.value.style.width = props.modelValue + '%'
+  contentRef.value.style.background = 'blue'
+  dantSliderTagRef.value.style.left = props.modelValue + '%'
+})
 </script>
 
 <style scoped lang="scss">
@@ -60,7 +64,7 @@ const handleClick = (e:any) => {
   }
 }
 .content {
-  border-radius: 50%;
+  border-radius: 25%;
   width: #e4e7ed;
   height: 5px;
 }
