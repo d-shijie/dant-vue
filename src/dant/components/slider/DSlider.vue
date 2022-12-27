@@ -1,7 +1,7 @@
 <template>
   <div class="d-slider" @click="handleClick">
     <div ref="contentRef" class="content" />
-    <span ref="dantSliderTagRef" class="d-slider__tag" @mousedown="handleMouseDown" />
+    <span ref="dantSliderTagRef" class="d-slider__tag" />
   </div>
 </template>
 
@@ -15,12 +15,7 @@ const props = defineProps({
 })
 const dantSliderTagRef = ref()
 const contentRef = ref()
-const handleMouseDown = () => {
-  console.log(dantSliderTagRef.value.style.left)
-}
-// const handleMouseMove = (e:any) => {
-//   dantSliderTagRef.value.style.left = e.offsetX + 'px'
-// }
+
 const handleClick = (e:any) => {
   dantSliderTagRef.value.style.left = e.offsetX + 'px'
   contentRef.value.style.width = dantSliderTagRef.value.style.left
